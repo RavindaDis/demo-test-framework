@@ -1,0 +1,55 @@
+def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'warning', 'ABORTED': 'danger']
+
+pipeline {
+    agent { label 'jenkins-agent-webapp' }
+    tools { maven "maven3.8.6" }
+
+    //Setting the environment variables AUTHORIZATION_TOKEN and BASE_URI
+    environment {
+        BASE_URI = 'https://staging.demo.app/'
+    }
+
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', 
+                    branches: [[name: '*/main']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[$class: 'CleanCheckout']],
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [[url: 'https://github.com/demo.git', credentialsId: 'demo-github-pta']]])
+                sh "ls -ltr"
+            }
+        }
+            
+        stage('Test Execution') {
+            steps {
+                // Run Maven on a Unix agent.
+                sh "mvn clean test -Dsurefire.suiteXmlFiles=./src/test/resources/api-test-suites/fuota_service_validation.xml"
+            }
+
+            post {
+                always {
+                    script {
+                        // Creating allure reports
+                        allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'test-output/allure-results']]
+                        ])
+                    }
+                    script {
+                        //Sending Slack message with the test status
+                        slackSend(
+                            channel: "cloud-test-executions", 
+                            color: COLOR_MAP[currentBuild.currentResult],
+                            message: "TEST EXECUTION RESULT: *${currentBuild.currentResult}*\n Job: ${env.JOB_NAME} build: ${env.BUILD_NUMBER}.\n Test Report at: ${env.BUILD_URL}allure/"
+                            )
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ML FILE TRANSFER TEST SUITE" verbose="1">
+    <listeners>
+        <listener class-name="app.demo.listeners.TestListener"/>
+        <listener class-name="org.testng.reporters.FailedReporter"/>
+        <listener class-name="org.testng.reporters.TestHTMLReporter"/>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+    </listeners>
+    <test name="API tests for ml file transfer">
+        <groups>
+            <run>
+                <include name="ml-ft-test"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="app.demo.tests.api.filetransfer.MlFileTransferValidationTest"/>
+            <class name="app.demo.tests.api.filetransfer.MlFileTransferCompleteFlowTest"/>
+        </classes>
+    </test>
+</suite>

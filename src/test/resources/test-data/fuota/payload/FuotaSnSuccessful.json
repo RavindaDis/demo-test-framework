@@ -1,0 +1,13 @@
+{
+  "gatewayEui": "xxxxx",
+  "fragDelay": 5000,
+  "dataRate": 5,
+  "frequency":868100000,
+  "siteId": "68",
+  "mg": 30160,
+  "sensorIds": [
+
+  ],
+  "dataFreq": 20,
+  "fileTransferJobId": "fe8f231b-a5cd-4a93-9463-83a6dc6bc41d"
+}

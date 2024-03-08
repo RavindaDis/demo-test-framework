@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+        </encoder>
+        <immediateFlush>false</immediateFlush>
+    </appender>
+    <timestamp key="timestamp" datePattern="yy-MM-dd'T'HH-mm-ss"/>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>test-output/Test Execution Logs/log-${timestamp}.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+        </encoder>
+    </appender>
+    <logger name="io.bb-test.http" level="${LOG_LEVEL}" default="TRACE"/>
+
+    <root level="${LOG_LEVEL}" default="TRACE">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

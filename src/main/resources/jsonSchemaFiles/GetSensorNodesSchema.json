@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sensor_node_type": {
+          "type": "integer"
+        },
+        "site": {
+          "type": "integer"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "activation_mode": {
+          "type": "integer"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "ns_end_device_id": {
+          "type": "string"
+        },
+        "serial_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "deployment_status": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "sensor_node_type",
+        "site",
+        "active",
+        "activation_mode",
+        "notes",
+        "latitude",
+        "longitude",
+        "ns_end_device_id",
+        "serial_id",
+        "id",
+        "deployment_status"
+      ]
+    }
+  ]
+}

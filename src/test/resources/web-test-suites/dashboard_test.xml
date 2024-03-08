@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Dashboard UI Test Suite" verbose="1">
+    <listeners>
+        <listener class-name="app.demo.listeners.TestListener"/>
+        <listener class-name="org.testng.reporters.FailedReporter"/>
+        <listener class-name="org.testng.reporters.TestHTMLReporter"/>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+    </listeners>
+    <test name="Dashboard UI Test Suite">
+        <groups>
+            <run>
+                <include name="always"/>
+                <include name="dashboard_test"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="app.demo.web.base.WebBase"/>
+            <class name="app.demo.tests.web.DashboardTest"/>
+        </classes>
+    </test>
+</suite>

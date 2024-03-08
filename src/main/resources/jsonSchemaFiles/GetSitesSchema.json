@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "network_server": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "ns_application_id": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "serial_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "network_server",
+            "name",
+            "ns_application_id",
+            "id",
+            "serial_id"
+          ]
+        },
+        "aggregate": {
+          "type": "object",
+          "properties": {
+            "sensorNodeDetails": {
+              "type": "object",
+              "properties": {
+                "nbOfDevices": {
+                  "type": "integer"
+                },
+                "minLatitude": {
+                  "type": "number"
+                },
+                "maxLatitude": {
+                  "type": "number"
+                },
+                "centerLatitude": {
+                  "type": "number"
+                },
+                "minLongitude": {
+                  "type": "number"
+                },
+                "maxLongitude": {
+                  "type": "number"
+                },
+                "centerLongitude": {
+                  "type": "number"
+                },
+                "radius": {
+                  "type": "number"
+                },
+                "area": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "nbOfDevices",
+                "minLatitude",
+                "maxLatitude",
+                "centerLatitude",
+                "minLongitude",
+                "maxLongitude",
+                "centerLongitude",
+                "radius",
+                "area"
+              ]
+            },
+            "gatewayDetails": {
+              "type": "object",
+              "properties": {
+                "nbOfDevices": {
+                  "type": "integer"
+                },
+                "minLatitude": {
+                  "type": "number"
+                },
+                "maxLatitude": {
+                  "type": "number"
+                },
+                "centerLatitude": {
+                  "type": "number"
+                },
+                "minLongitude": {
+                  "type": "number"
+                },
+                "maxLongitude": {
+                  "type": "number"
+                },
+                "centerLongitude": {
+                  "type": "number"
+                },
+                "radius": {
+                  "type": "number"
+                },
+                "area": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "nbOfDevices",
+                "minLatitude",
+                "maxLatitude",
+                "centerLatitude",
+                "minLongitude",
+                "maxLongitude",
+                "centerLongitude",
+                "radius",
+                "area"
+              ]
+            }
+          },
+          "required": [
+            "sensorNodeDetails",
+            "gatewayDetails"
+          ]
+        }
+      },
+      "required": [
+        "data",
+        "aggregate"
+      ]
+    }
+  ]
+}
